@@ -18,12 +18,18 @@ class MenuState extends FlxState
 	override public function create():Void
 	{
 		// Set a background color
-		FlxG.cameras.bgColor = 0xff131c1b;
+		FlxG.cameras.bgColor = 0xffccecd8;
 		// Show the mouse (in case it hasn't been disabled)
 		#if !FLX_NO_MOUSE
 		FlxG.mouse.show();
 		#end
-		this.add(new FlxText(0, 0, 100, "Hello World!"));		
+
+		var test = new FlxText(FlxG.width / 2 - 100, 0, 200, "Hello World!", 16);
+		//test.set_alignment('center');
+		this.add(test);
+		var image = new FlxSprite(0, 0, 'assets/images/center_bottom.png');
+		// image.y = FlxG.height - 200;
+		this.add(image);
 		super.create();
 	}
 	
