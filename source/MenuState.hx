@@ -27,8 +27,9 @@ class MenuState extends FlxState
 		var test = new FlxText(FlxG.width / 2 - 100, 0, 200, "Hello World!", 16);
 		//test.set_alignment('center');
 		this.add(test);
-		var image = new FlxSprite(0, 0, 'assets/images/center_bottom.png');
-		// image.y = FlxG.height - 200;
+		var image = new FlxSprite(-95, 0, 'assets/images/center_bottom.png');
+		image.y = FlxG.height - image.frameHeight;
+		image.scale = new flixel.util.FlxPoint(1, 1);
 		this.add(image);
 		super.create();
 	}
