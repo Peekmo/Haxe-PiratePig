@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxSpriteUtil;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -24,16 +25,40 @@ class MenuState extends FlxState
 		FlxG.mouse.show();
 		#end
 
-		var test = new FlxText(FlxG.width / 2 - 100, 0, 200, "Hello World!", 16);
-		//test.set_alignment('center');
-		this.add(test);
+        this.createMenu();
+
+        // Bottom image
 		var image = new FlxSprite(-95, 0, 'assets/images/center_bottom.png');
 		image.y = FlxG.height - image.frameHeight;
 		image.scale = new flixel.util.FlxPoint(1, 1);
 		this.add(image);
+
 		super.create();
 	}
-	
+
+	/**
+    * Creates the menu of the application
+    **/
+    private function createMenu() : Void
+    {
+        var btnPlay: FlxButton = new FlxButton(0, 0, 'Play');
+        btnPlay.makeGraphic(200, 50, 0xff5aaed4);
+        FlxSpriteUtil.screenCenter(btnPlay, true, true);
+        btnPlay.y = btnPlay.y - 100;
+        btnPlay.label.size = 30;
+        this.add(btnPlay);
+
+        var btnQuit : FlxButton = new FlxButton(0, 0, 'Leave', function() {
+            this.destroy();
+        });
+
+        btnQuit.makeGraphic(200, 50, 0xff5aaed4);
+        FlxSpriteUtil.screenCenter(btnQuit, true, true);
+        btnQuit.label.size = 30;
+
+        this.add(btnQuit);
+    }
+
 	/**
 	 * Function that is called when this state is destroyed - you might want to 
 	 * consider setting all objects this state uses to null to help garbage collection.
@@ -49,5 +74,5 @@ class MenuState extends FlxState
 	override public function update():Void
 	{
 		super.update();
-	}	
+	}
 }
